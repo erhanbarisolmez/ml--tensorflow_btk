@@ -20,4 +20,20 @@ numerical_columns = dataFrame.select_dtypes(include=[np.number]) # sayısal süt
 
 correlation = numerical_columns.corr() # korelasyon hesaplama
 
-price_correlation = correlation["price"].sort_values() #"price" sğtunundaki diğer sütunlarla olan korelasyonu kontrol etme
+price_correlation = correlation["price"].sort_values() #"price" sütunundaki diğer sütunlarla olan korelasyonu kontrol etme
+
+
+
+plt.scatter(x=price_correlation["year"], y=price_correlation["price"], c="blue", alpha=0.5)
+
+fig, ax = plt.subplots()
+ax.plot(price_correlation["year"], price_correlation["price"])
+plt.scatter(x=price_correlation["year"], y=price_correlation["price"], c="red", alpha=0.5)
+
+
+dataFrame.sort_values("price", ascending=False).head(20) #en yüksek, true: en küçük
+
+len(dataFrame) * 0.01
+yüzdeDoksanDokuzDf = dataFrame.sort_values("price", ascending=False).iloc[131:]
+plt.figure(figsize=(7,5))
+sbn.displot(yüzdeDoksanDokuzDf["price"])
